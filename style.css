@@ -1,0 +1,234 @@
+:root {
+    --primary-color: #00A36C;
+    --shadow: #6F8FAF;
+}
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1rem 2rem; 
+    border: 1px solid olive;
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s ease;
+}
+
+.btn:hover {
+    color: #FFF;
+   
+}
+
+.btn::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: olive;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+    z-index: -1;
+    /* border-top-right-radius: 25px;
+    border-bottom-right-radius: -15px; */
+}
+
+.btn:hover::before{
+    transform: translateX(0);
+}
+
+.success::before {
+    background-color: green;
+}
+
+.danger::before {
+    background-color: red;
+}
+
+/* toggle button */
+.btn-toggle {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* height: 2rem; */
+}
+
+.toggle {
+    opacity: 0;
+}
+
+.checkbox {
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+.toggle + label {
+    padding-left: 5rem;
+}
+
+.toggle + label::before {
+    content: "";
+    width: 4rem;
+    height: 2rem;
+    background-color: #c6c6c6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 2rem;
+    transition: background-color 1s;
+}
+
+.toggle + label::after {
+    content: "";
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #FFF;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    transition: transform 1s;
+}
+
+.toggle:checked + label::before {
+    background-color: #20b776;
+}
+
+.toggle:checked + label::after {
+    transform: translateX(2rem);
+}
+
+
+.button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    background-color: #3498db;
+    transition: background-color 0.3s ease;
+}
+
+.button span {
+    position: relative;
+    z-index: 2;
+}
+
+.button .wave {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform-origin: bottom;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+.button:hover .wave {
+    opacity: 1;
+    height: 100%;
+    transform: scaleY(2);
+}
+
+.box {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0.7rem 0.7rem 0.9rem var(--shadow);
+
+
+}
+
+.box .principal {
+    background-color: var(--primary-color);
+    width: 300px;
+    height: 200px;
+    
+}
+.box .degree {
+    background-color: #FFF;
+    position: absolute;
+    width: 400px;
+    height: 200px;
+    top: 200px;
+    left: 0px;
+    transform-origin: left top;
+    transition: all 2s ease-out 100ms;
+    /* transform: rotate(-10deg); */
+    /* rotate: -20deg; */
+    border-top: 2px solid #FFF;
+}
+
+.box .principal + .degree {
+    animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(-10deg);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+        
+    }
+
+    30% {
+        transform: rotate(-20deg);
+        background-color: #2980b9;
+    }
+
+    40% {
+        transform: rotate(-25deg);
+    } 
+
+    50% {
+        transform: rotate(-30deg);
+    }
+    60% {
+        transform: rotate(-33deg);
+    }
+    
+}
+
+.box2{
+    width: 300px;
+    height: 200px;
+    background-color: var(--shadow);
+    /* clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%); */
+    clip-path: polygon(
+        0 0, 
+        20% 0,
+        20% 20%,
+        60% 20%,
+        60% 0%,
+        80% 20%,
+        100% 0%,
+        100% 100%,
+        0 100%
+        );
+}
